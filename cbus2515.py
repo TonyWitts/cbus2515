@@ -1,5 +1,7 @@
 # MicroPython CBUS/MCP2515 CAN controller driver
 # (c)2021 Tony Witts
+
+# 220604 - First commit to GitHub.
 # 210322 - Handles Enumeration in and out
 #        - debug parameter to print debug messages
 #        - Handles Major Priority if message not getting through
