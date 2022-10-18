@@ -1,7 +1,7 @@
 # MicroPython CBUS/MCP2515 CAN controller driver
 # (c)2021 Tony Witts
 
-# 221018 - Send handles Msg of None.
+# 221018 - Send handles Msg of None; Raise error on missing 2515.
 # 220604 - First commit to GitHub.
 # 210322 - Handles Enumeration in and out
 #        - debug parameter to print debug messages
@@ -130,7 +130,7 @@ class Cbus2515():
         if self.read_reg(CANCTRL) & 7 != 7:
             if self.debug: print("MCP2515 missing!")
             self.can_id_msg = ''
-            return
+            raise RuntimeError("MCP2515 missing!")
         self.can_id = self.get_can_id()
         self.can_sid = bytearray([self.can_id >> 3, self.can_id << 5])
         self.can_id_msg = ":S"+hexlify(self.can_sid).decode()+"N;"
