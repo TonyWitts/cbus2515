@@ -315,7 +315,7 @@ class Cbus2515():
         tx_buffer = self.tx_buffer
         if self.debug: print("\n-Send------------------------------")
         if self.debug: print("-msg:", msg)
-        if len(msg) < 8:
+        if msg is None or len(msg) < 8:
             if self.debug: print("Message too short!")
             return 10
         if msg[0] != ':' or msg[-1] != ';':
